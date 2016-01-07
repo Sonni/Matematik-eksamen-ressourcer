@@ -61,6 +61,13 @@ def formatMatrix(m, a, b, operation):
 
     print "\nLatex code:"
     print "_______________________"
+    if operation == "*":
+        print "Matricerne kan ganges sammen, da matrix A's antal sojler, svarer til matrix B's antal raekker.\\"
+        print "\\\\Matrix multiplikation forgaar paa folgende maade: $(AB)_{ij}=\sum\limits_{k=1}^mA_{ik}B_{kj}$"
+    if operation == "+":
+        print "Matrix addition er trivielt og resultatet er som folgende:\\\\"
+    if operation == "-":
+        print "Matrix subtraction er trivielt og resultatet er som folgende:\\\\"
 
     print "\["
 
@@ -105,18 +112,12 @@ def takeMatrixInput():
         userInput = raw_input()
     return result
 
-useInput = raw_input("Use variable matrices as input? (y/n): ")
-if useInput == "y":
-    #__________________________________
-    m = [[1, -1], [0, 1], [2, 3]]
-    n = [[3, -2, -1], [1, 0, 2]]
-    #__________________________________
-else:
-    print "Write row by row, each number separated by space. e = exit"
-    m = takeMatrixInput()
 
-    print "Enter next matrix:"
-    n = takeMatrixInput()
+print "Write row by row, each number separated by space. 'e' = next, ENTER = new row: "
+m = takeMatrixInput()
+
+print "Enter next matrix: e = next"
+n = takeMatrixInput()
 
 
 

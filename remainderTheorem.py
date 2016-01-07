@@ -6,8 +6,13 @@ from fractions import gcd
 def solve(a_n, m_n, interval):
 
     if not isRelativelyPrime(m_n):
-        print "Ligningerne er ikke parvist indbyrdes primiske"
+        print "Ligningerne er ikke parvis indbyrdes primiske"
         exit()
+
+    intro = "KRS kan bruges, da "
+    for i in range(len(m_n)):
+        intro += str(m_n[i]) + ", "
+    intro = intro[0:-2] + " er parvis indbyrdes primiske:"
 
     a_nString = []
     m_nString = []
@@ -48,10 +53,11 @@ def solve(a_n, m_n, interval):
     print "y_k =", y_k
 
     x = 0
-    for i in range(len(m_n)):
-        x += a_n[i] * m_n[i] * y_k[i]
-    xString = "x=$\sum\limits_{i=0}^n(a_i\cdot M_i \cdot y_i)=" + str(x) + "$"
+    for i in range(len(M_n)):
+        x += a_n[i] * M_n[i] * y_k[i]
+    xString = "\\\\ \centerline{x=$\sum\limits_{i=0}^n(a_i\cdot M_i \cdot y_i)=" + str(x) + "$}\\\\"
     print "x =", x
+
     print "___________________________"
 
     for i in range(len(a_nString)):
@@ -71,7 +77,15 @@ def solve(a_n, m_n, interval):
     print xString,"\\\\"
 
     if interval[0] == 0 and interval[1] == 0:
-        print "Fak"
+        newX = x
+        if x > m:
+            newX = x-(m*(x/m))
+            print "Den laveste losning er $x-(m\cdot (\\frac{x}{m}))=" + str(x) + "-(" + str(m) + "\cdot (\\frac{" + str(x) + "}{" + str(m) + "}))=" + str(newX) + "$\\\\"
+            print "\\\\$" + str(x) + "\equiv" + str(newX) + "$ (mod " + str(m) + ")\\\\"
+
+
+        print "Losningsmaengden er derfor\\\\"
+        print "\\\\ \centerline{$\{" + str(newX) + "+" + str(m) + "|k\in \mathbb{Z}$\}}"
         return True
     else:
         result = []
