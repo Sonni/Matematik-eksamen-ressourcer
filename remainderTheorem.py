@@ -85,7 +85,7 @@ def solve(a_n, m_n, interval):
 
 
         print "Losningsmaengden er derfor\\\\"
-        print "\\\\ \centerline{$\{" + str(newX) + "+" + str(m) + "|k\in \mathbb{Z}$\}}"
+        print "\\\\ \centerline{$\{" + str(newX) + "+" + str(m) + "\cdot k|k\in \mathbb{Z}$\}}"
         return True
     else:
         result = []
