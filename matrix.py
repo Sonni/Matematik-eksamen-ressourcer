@@ -12,7 +12,7 @@ def plus(m, n):
         return result
 
     else:
-        print "The matrices do not have the same length"
+        print "Matricerne har ikke samme storrelse"
         exit()
 
 def minus(m, n):
@@ -27,7 +27,7 @@ def minus(m, n):
         return result
 
     else:
-        print "The matrices do not have the same length"
+        print "Matricerne har ikke samme storrelse"
         exit()
 
 
@@ -62,17 +62,26 @@ def formatMatrix(m, a, b, operation):
     print "\nLatex code:"
     print "_______________________"
     if operation == "*":
-        print "Matricerne kan ganges sammen, da matrix A's antal sojler, svarer til matrix B's antal raekker.\\"
+        print "Matricerne kan ganges sammen, da matrix A's antal sojler, svarer til matrix B's antal raekker.\\\\"
         print "\\\\Matrix multiplikation forgaar paa folgende maade: $(AB)_{ij}=\sum\limits_{k=1}^mA_{ik}B_{kj}$"
     if operation == "+":
-        print "Matrix addition er trivielt og resultatet er som folgende:\\\\"
+        print "Matricerne kan laegges sammen, da de har samme storrelse.\\\\"
+        print "\\\\Matrix addition er trivielt og resultatet er som folgende:\\\\"
     if operation == "-":
-        print "Matrix subtraction er trivielt og resultatet er som folgende:\\\\"
+        print "Matricerne kan traekkes fra hinanden, da de har samme storrelse.\\\\"
+        print "\\\\Matrix subtraction er trivielt og resultatet er som folgende:\\\\"
 
     print "\["
+    if operation == "*":
+        print "A\cdot B="
+    else:
+        print "A" + operation + "B="
 
     printMatrix(a)
-    print operation
+    if operation == "*":
+        print "\cdot"
+    else:
+        print operation
     printMatrix(b)
     print "="
     printMatrix(m)
@@ -80,6 +89,7 @@ def formatMatrix(m, a, b, operation):
     print "\]"
 
     print "_______________________"
+
 
 def printMatrix(m):
     print "\\begin{bmatrix}"

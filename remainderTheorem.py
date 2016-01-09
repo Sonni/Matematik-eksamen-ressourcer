@@ -43,10 +43,12 @@ def solve(a_n, m_n, interval):
     print "M_n =", M_n
 
     y_k = []
+    y_kCalcString = []
     y_kString = []
     for i in range(len(m_n)):
         for y in range(m_n[i]):
             if (y * M_n[i]) % m_n[i] == 1:
+                y_kCalcString.append("$" + str(y) + "\cdot" + str(M_n[i]) + "\equiv 1$ (mod " + str(m_n[i]) + ")\\\\")
                 y_k.append(y)
                 y_kString.append("$y_" + str(i) + "=" + str(y) + "$\\\\")
                 break
@@ -71,7 +73,10 @@ def solve(a_n, m_n, interval):
     for i in range(len(M_nString)):
         print M_nString[i]
     print "\\\\"
+    print "For at finde $y_n$, kan vi bruge foglende: $y_n\cdot M_n\equiv 1$ (mod $m_n$)\\\\"
+    print "\\\\"
     for i in range(len(y_kString)):
+        print y_kCalcString[i]
         print y_kString[i]
     print "\\\\"
     print xString,"\\\\"
@@ -86,7 +91,6 @@ def solve(a_n, m_n, interval):
 
         print "Losningsmaengden er derfor\\\\"
         print "\\\\ \centerline{$\{" + str(newX) + "+" + str(m) + "\cdot k|k\in \mathbb{Z}$\}}"
-        return True
     else:
         result = []
         result.append(x)
@@ -105,6 +109,7 @@ def solve(a_n, m_n, interval):
                 break
             else:
                 result.append(tmpX)
+        result.sort()
 
         intervalString = "Kongruens-systemet har losningerne "
 
@@ -113,6 +118,8 @@ def solve(a_n, m_n, interval):
         intervalString = intervalString[0: -2]
         intervalString += " i intervallet " + str(interval[0]) + "-" + str(interval[1]) + "."
         print "\\\\", intervalString
+
+    print "___________________________"
 
 
 def isRelativelyPrime(m_n):
